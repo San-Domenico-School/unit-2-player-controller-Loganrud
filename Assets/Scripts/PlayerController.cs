@@ -23,18 +23,22 @@ public class PlayerController : MonoBehaviour
     // Initializes speed and turn speed before the first frame update
     void Start()
     {
-        speed = 30.0f;
+        speed = 20.0f;
         turnspeed = 30.0f;
         rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        rb.AddRelativeForce(Vector3.forward * speed * verticalInput * 100);
+        transform.Rotate(Vector3.up * turnspeed * horizontalInput* Time.deltaTime);
     }
 
-
-
-
+    // Called from PlayerActionInput when user presses WASD or arrow keys
+    private void OnMove(InputValue input)
+    {
+        verticalInput = input.Get<Vector2>().y;
+        horizontalInput = input.Get<Vector2>().x;
+    }
 }
