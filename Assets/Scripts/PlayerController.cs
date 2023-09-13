@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         speed = 20.0f;
-        turnspeed = 30.0f;
+        turnspeed = 50.0f;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddRelativeForce(Vector3.forward * speed * verticalInput * 100);
         transform.Rotate(Vector3.up * turnspeed * horizontalInput* Time.deltaTime);
+        Scorekeeper.Instance.AddToScore(verticalInput);
     }
 
     // Called from PlayerActionInput when user presses WASD or arrow keys
@@ -41,4 +42,14 @@ public class PlayerController : MonoBehaviour
         verticalInput = input.Get<Vector2>().y;
         horizontalInput = input.Get<Vector2>().x;
     }
+
+    // Detects a collision with a colider and inputs what it hit. If an obstacle was hit, it calls the SubtractFromScore method from Scorekeeper class.
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Scorekeeper.Instance.SubtractFromScore();
+        }
+    }
 }
+
