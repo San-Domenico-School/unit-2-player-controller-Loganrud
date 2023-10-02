@@ -30,7 +30,7 @@ public class Scorekeeper : MonoBehaviour
         else if (Instance != this)
             Destroy(this);
     }
-
+    
 
     //Inputs vertical input value received from the playerController script to an exponential
     //function whose values range from 0.00 to 0.35 which is then added to the score before

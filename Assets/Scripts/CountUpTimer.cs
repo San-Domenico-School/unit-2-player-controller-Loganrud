@@ -9,11 +9,11 @@ using TMPro;
 * the game.  Functionalities are listed above each method declaration
 ************************************************************************/
 
-public class Time : MonoBehaviour
+public class CountUpTimer : MonoBehaviour
 {
-    public static Time Instance;                       //This script has a public static
-                                                       //reference to itself so that other scripts can access it
-                                                       //from anywhere without needing to find a reference to it
+    public static CountUpTimer Instance;                       //This script has a public static
+                                                        //reference to itself so that other scripts can access it
+                                                        //from anywhere without needing to find a reference to it
     public TextMeshProUGUI timerText;                             // Reference to a Text component where you want to display the timer.
     private bool isTimerRunning = true;
     private float elapsedTime = 0f;
@@ -35,7 +35,7 @@ public class Time : MonoBehaviour
     {
         if (isTimerRunning)
         {
-            //elapsedTime += 
+            elapsedTime += Time.deltaTime;
             UpdateTimerDisplay();
         }
     }

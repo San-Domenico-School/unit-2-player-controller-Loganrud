@@ -11,10 +11,11 @@ public class RandomObstacle : MonoBehaviour
     private int numberOfObstacles = 10;
 
     // Minimum and maximum spawn position along the track
-    private float minSpawnZ = -16f;
-    private float maxSpawnZ = 383f;
-    private float minSpawnX = -8f;
-    private float maxSpawnX = 8f;
+    private float minSpawnZ = 100f;
+    private float maxSpawnZ = 743f;
+    private float minSpawnX = 263F;
+    private float maxSpawnX = 810f;
+    private float SpawnY = 211f;
 
     // Start is called before the first frame update
     private void Start()
@@ -41,7 +42,7 @@ public class RandomObstacle : MonoBehaviour
             // Randomly generate a spawn position along the track
             float spawnZ = Random.Range(minSpawnZ, maxSpawnZ);
             float spawnX = Random.Range(minSpawnX, maxSpawnX);
-            Vector3 spawnPosition = new Vector3(spawnX, 2.5f, spawnZ);
+            Vector3 spawnPosition = new Vector3(spawnX, SpawnY, spawnZ);
 
             // Instantiate the selected obstacle at the spawn position
             GameObject obstacle = Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity);
