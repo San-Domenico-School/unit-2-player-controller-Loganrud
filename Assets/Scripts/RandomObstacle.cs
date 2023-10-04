@@ -8,7 +8,7 @@ public class RandomObstacle : MonoBehaviour
     [SerializeField] private GameObject[] obstaclePrefabs;
 
     // Number of obstacles to instantiate
-    private int numberOfObstacles = 10;
+    private int numberOfObstacles = 100;
 
     // Minimum and maximum spawn position along the track
     private float minSpawnZ = 100f;
